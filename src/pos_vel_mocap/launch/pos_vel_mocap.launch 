@@ -1,0 +1,5 @@
+<launch>
+    <node pkg="pos_vel_mocap" type="pos_vel_mocap" name="pos_vel_mocap" output="screen" launch-prefix="">
+		<remap from="/Robot_1/pose" to="/Robot_1/pose" />
+	</node>
+</launch>
