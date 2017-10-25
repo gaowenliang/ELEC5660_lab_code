@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=shutdown
+Exec=terminator -T "ros"  -x /home/nvidia/demo_application/shutdown_all.sh
+Termina=false
+Icon=/home/nvidia/demo_application/icons/Icon_weapon_Pan.png
+Type=Application
+Categories=Development
+Name[en_HK]=shutdown

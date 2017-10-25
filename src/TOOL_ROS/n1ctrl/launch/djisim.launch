@@ -1,0 +1,45 @@
+<launch>
+	<node if="true" pkg="n1ctrl" type="n1_sim_helper.py" name="n1_sim_helper" output="screen">
+		<remap from="~odom" to="/odom" />
+		<remap from="~imu" to="/djiros/imu" />
+		<remap from="~velo" to="/djiros/velo" />
+		<remap from="~gps" to="/djiros/gps" />
+	</node>
+
+	<node pkg="n1ctrl" type="n1ctrl_node" name="n1ctrl" output="screen">
+		<remap from="~joy" to="/djiros/rc" />
+		<remap from="~odom" to="/odom" />
+		<remap from="~imu" to="/djiros/imu" />
+		<remap from="~cmd" to="/position_cmd" />
+
+		<remap from="~desire_pose" to="/desire_pose" />
+		<remap from="~ctrl" to="/djiros/ctrl" />
+		<remap from="~traj_start_trigger" to="/traj_start_trigger" />
+
+		<rosparam command="load" file="$(find n1ctrl)/config/ctrl_param_sim.yaml" />
+		<!-- <param name="js_ctrl_mode" type="string" value="raw" /> -->
+		<param name="js_ctrl_mode" type="string" value="feedback" />
+	</node>
+
+	<node pkg="waypoint_generator" type="waypoint_generator" name="waypoint_generator" output="screen">
+		<param name="waypoint_type" type="string" value="circle" />
+		<remap from="~odom" to="/odom" />
+		<remap from="~goal" to="/goal" />
+		<remap from="~waypoints" to="/waypoints" />
+		<remap from="~waypoints_vis" to="/waypoints_vis" />
+		<remap from="~traj_start_trigger" to="/traj_start_trigger" />
+	</node>
+
+	<node pkg="trajectory_generator" type="trajectory_generator" name="trajectory_generator" output="screen">
+		<param name="add_waypoint_dist_thr" type="double" value="99.0" />
+		<param name="add_waypoint_theta_thr" type="double" value="99.0" /> 
+		<remap from="~odom" to="/odom" />
+		<remap from="~waypoints" to="/waypoints" />
+		<remap from="~position_cmd" to="/position_cmd" />
+		<remap from="~path" to="/raw_path_vis" />
+		<remap from="~traj" to="/traj_path_vis" />
+		<!-- <remap from="~trigger" to="/reset_hover_trigger" /> -->
+		<!-- <remap from="~correction" to="/waypoints_vis" /> -->
+	</node>
+
+</launch>

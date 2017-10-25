@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=mapping
+Exec=terminator -T "mapping"  -x /home/px/demo_application/mapping_autorun.sh
+Termina=false
+Icon=/home/px/demo_application/icons/mapping_autorun.png
+Type=Application
+Categories=Development
+Name[en_HK]=mapping

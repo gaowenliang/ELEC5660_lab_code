@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=camera_vins
+Exec=terminator -T "ros"  -x /home/px/demo_application/camera_vins.sh
+Termina=false
+Icon=/home/px/demo_application/icons/camera_vins.png
+Type=Application
+Categories=Development
+Name[en_HK]=camera_vins

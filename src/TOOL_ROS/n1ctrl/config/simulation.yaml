@@ -1,0 +1,42 @@
+# param for simulation
+mass        : 0.74
+gra         : 9.81
+hov_percent : 0.50
+
+CTRL_RATE             : 50.0
+ODOM_LOST_TIME_THR    : 0.5
+RC_LOST_TIME_THR      : 0.5
+CMD_LOST_TIME_THR     : 0.5
+RC_TO_HORI_VELO_SCALE : 4.0
+RC_TO_VERT_VELO_SCALE : 3.0
+
+# rad 30~0.523 45~0.785 60~1.047
+RC_TO_YAW_SCALE     : 1.047
+RC_TO_ANGLE_SCALE   : 0.523
+
+SET_HOV_PERCENT_TO_ZERO : false
+USE_HOV_PERCENT_KF: false
+RC_DEADZONE: 0.3
+LOCK_VELO: 0.3
+
+idling_desired_height_limit: 0.05
+idling_thrust: 0.1
+idling_landing_thrust: 0.8
+idling_landing_timeout: 1
+
+hov_thr_kf_update_vert_velo_limit: 0.2
+hov_thr_kf_update_vert_height_limit: 0.5
+
+# Controller gain in minimun snap
+Kp0: 3.0
+Kp1: 3.0
+Kp2: 4.0
+Kv0: 2.0
+Kv1: 2.0
+Kv2: 3.0 # 1.0
+Kr0: 0.5
+Kr1: 0.5
+Kr2: 0.1
+Kw0: 0.07
+Kw1: 0.07
+Kw2: 0.03

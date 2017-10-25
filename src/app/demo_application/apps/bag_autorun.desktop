@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=VINS+mapping
+Exec=terminator -T "ros"  -x /home/px/demo_application/bag_autorun.sh
+Termina=false
+Icon=/home/px/demo_application/icons/bag_autorun.png
+Type=Application
+Categories=Development
+Name[en_HK]=bag_autorun

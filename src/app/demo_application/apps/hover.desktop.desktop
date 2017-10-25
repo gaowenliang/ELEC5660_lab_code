@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=hover
+Exec=terminator -T "ros"  -x /home/nvidia/demo_application/hover.sh
+Termina=false
+Icon=/home/nvidia/demo_application/icons/camera_vins.png
+Type=Application
+Categories=Development
+Name[en_US]=hover.desktop

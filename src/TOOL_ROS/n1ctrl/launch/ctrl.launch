@@ -1,0 +1,24 @@
+<launch>
+<arg name="enable_djisim" default="false" />
+<node pkg="n1ctrl" type="n1ctrl_node" name="n1ctrl" output="screen">
+		<!-- <env name="ROSCONSOLE_FORMAT" value="${message}"/> -->
+
+		<remap from="~joy" to="/djiros/rc" />
+		<remap from="~odom" to="/odom" />
+		<remap from="~imu" to="/djiros/imu" />
+		<remap from="~cmd" to="/position_cmd" />
+
+		<remap from="~desire_pose" to="/desire_pose" />
+		<remap from="~ctrl" to="/djiros/ctrl" />
+		<remap from="~traj_start_trigger" to="/traj_start_trigger" />
+
+		<rosparam if="$(arg enable_djisim)" 
+			command="load" 
+			file="$(find n1ctrl)/config/djisim.yaml" />
+		
+		<rosparam 
+			unless="$(arg enable_djisim)" 
+			command="load" 
+			file="$(find n1ctrl)/config/online.yaml" />
+	</node>
+</launch>

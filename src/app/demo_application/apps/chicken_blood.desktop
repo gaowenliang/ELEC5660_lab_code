@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=VINS+mapping
+Exec=terminator -T "ros"  -x /home/uav/demo_application/chicken_blood.sh
+Termina=false
+Icon=/home/uav/demo_application/icons/max_performance.png
+Type=Application
+Categories=Development
+Name[en_HK]=chicken_blood

@@ -1,0 +1,10 @@
+<launch>
+	<node
+		pkg="n1ctrl" type="n1_sim_helper.py" name="n1_sim_helper" output="screen">
+		<remap from="~odom" to="/odom" />
+		<remap from="~imu" to="/djiros/imu" />
+		<remap from="~velo" to="/djiros/velo" />
+		<remap from="~gps" to="/djiros/gps" />
+	</node>
+
+</launch>

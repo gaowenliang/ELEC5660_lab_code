@@ -1,0 +1,32 @@
+default:
+    color:
+        r: 1.0
+        g: 0.0
+        b: 0.0
+        a: 0.0
+    base_frame_id: "world"
+
+tf:
+    enable: true
+    # base_frame_id: "world" # can be omitted or overwrite default/base_frame_id
+    body_frame_id: "body"
+    intermediate_frame_id: "intermediate"
+    intermediate_frame_enable: true
+    base_alias_frame_id: "map"
+    base_alias_frame_enable: true
+
+velocity:
+    enable: true
+    # color: # can be omitted or overwrite default/color
+    #   r: 1.0
+    #   g: 0.0
+    #   b: 0.0
+    #   a: 0.0
+
+path:
+    enable: false
+    decimation: 0 # no decimation when < 1 
+    max_history: -1.0 # infinite history when < 0
+
+euler:
+    enable: false

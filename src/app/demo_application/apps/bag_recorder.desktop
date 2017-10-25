@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=bag_recorder
+Exec=terminator -T "ros"  -x /home/px/demo_application/bag_recorder.sh
+Termina=false
+Icon=/home/px/demo_application/icons/bag_recorder.png
+Type=Application
+Categories=Development
+Name[en_HK]=bag_recorder

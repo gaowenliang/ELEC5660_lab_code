@@ -1,0 +1,78 @@
+mass        : 3.2
+gra         : 9.81
+hov_percent : 0.506365041899
+full_thrust : 62
+ctrl_rate   : 50.0
+js_ctrl_lock_velo: 0.3
+
+hover:
+    set_hov_percent_to_zero: false
+    use_hov_percent_kf: true
+    vert_velo_limit_for_update: 0.01
+    vert_height_limit_for_update: 0.2
+    percent_lower_limit: 0.2
+    percent_higher_limit: 0.8
+
+gain:
+    hover:
+        # Controller gain in minimun snap
+        Kp0: 2.0
+        Kp1: 2.0
+        Kp2: 2.0
+        Kv0: 2.5
+        Kv1: 2.5
+        Kv2: 2.5
+        Kvi0: 0.0
+        Kvi1: 0.0
+        Kvi2: 0.0
+        Ka0: 1.0
+        Ka1: 1.0
+        Ka2: 1.0
+        Kr0: 0.5
+        Kr1: 0.5
+        Kr2: 0.1
+        Kw0: 0.07
+        Kw1: 0.07
+        Kw2: 0.07
+    track:
+        Kp0: 2.0
+        Kp1: 2.0
+        Kp2: 2.0
+        Kv0: 2.5 
+        Kv1: 2.5 
+        Kv2: 2.5
+        Kvi0: 0.0
+        Kvi1: 0.0
+        Kvi2: 0.0
+        Ka0: 1.0
+        Ka1: 1.0
+        Ka2: 1.0
+        Kr0: 0.5
+        Kr1: 0.5
+        Kr2: 0.1
+        Kw0: 0.07
+        Kw1: 0.07
+        Kw2: 0.07
+
+idling:
+    desired_height_limit:   -100.10
+    desired_velo_limit:     0.10
+    feedback_velo_limit:    0.10
+    js_thrust_limit:        0.1
+    landing_timeout:        1.0
+    landing_thrust_percent: 0.6
+    lowest_thrust:          0.11
+
+rc:
+    hori_velo_scale:   4.0
+    vert_velo_scale:   3.0
+    # rad 30~0.523 45~0.785 60~1.047
+    yaw_scale:         0.785
+    attitude_scale:    0.523
+    deadzone:          0.02
+    exit_cmd_deadzone: 0.2
+
+msg_timeout:
+    odom: 0.5
+    rc:   0.2
+    cmd:  0.5

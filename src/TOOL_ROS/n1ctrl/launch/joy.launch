@@ -1,0 +1,15 @@
+<launch>
+	<node pkg="joy" type="joy_node" name="joystick" output="screen">
+		<remap from="~joy" to="/joy" />
+		<param name="dev" type="string" value="/dev/input/js0" />
+		<param name="autorepeat_rate" type="double" value="100.0" />
+	</node>
+
+
+	<!-- <node pkg="n1ctrl" type="joy_remapper.py" name="joy_remapper" output="screen">
+		<remap from="~src" to="/joy_raw" />
+		<remap from="~des" to="/joy" />
+	</node> -->
+
+
+</launch>

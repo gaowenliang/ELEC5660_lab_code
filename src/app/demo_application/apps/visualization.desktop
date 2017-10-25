@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=visualization
+Exec=terminator -T "visualization"  -x /home/px/demo_application/visualization_autorun.sh
+Termina=false
+Icon=/home/px/demo_application/icons/visualization.png
+Type=Application
+Categories=Development
+Name[en_HK]=visualization

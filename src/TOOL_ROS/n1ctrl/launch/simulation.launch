@@ -1,0 +1,24 @@
+<launch>
+	<node pkg="n1ctrl" type="sim_helper.py" name="sim_helper" output="screen">
+		<remap from="~sim_odom" to="/sim_odom" />
+		<remap from="~odom" to="/odom" />
+		<remap from="~imu" to="/imu" />
+	</node>
+
+	<node pkg="n1ctrl" type="n1ctrl_node" name="n1ctrl" output="screen">
+		<env name="ROSCONSOLE_FORMAT" value="${message}"/>
+		<remap from="~joy" to="/joy" />
+		<remap from="~odom" to="/odom" />
+		<remap from="~imu" to="/imu" />
+		<rosparam command="load" file="$(find n1ctrl)/config/simulation.yaml" />
+	</node>
+
+	<include file="$(find n1ctrl)/launch/joy.launch" />
+
+	<node pkg="so3_quadrotor_simulator" type="quadrotor_simulator_so3" name="quadrotor_simulator_so3" output="screen">
+    	<param name="rate/odom" value="100.0"/>
+    	<remap from="~odom" to="/sim_odom"/>
+    	<remap from="~cmd" to="/n1ctrl/ctrl_so3"/>
+  	</node>
+
+</launch>

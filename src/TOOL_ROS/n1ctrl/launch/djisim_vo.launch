@@ -1,0 +1,7 @@
+<launch>
+	<node pkg="n1ctrl" type="n1_sim_vo.py" name="n1_sim_vo" output="screen">
+		<remap from="~odom" to="/odom" />
+		<remap from="~odom_vo" to="/djisim/odom_vo" />
+	</node>
+
+</launch>
