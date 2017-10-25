@@ -39,6 +39,8 @@
 
 `chmod +x hover.sh`
 
+`cd apps`
+
 `chmod +x hover.desktop.desktop`
 
 `cp hover.desktop.desktop ~/Desktop/`
