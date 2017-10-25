@@ -11,7 +11,11 @@
 
 `cd`
 
-`cd ELEC5660_lab_code/src/djiros/OSDK/Onboard-SDK-3.3/build/`
+`cd ELEC5660_lab_code/src/djiros/OSDK/Onboard-SDK-3.3/`
+
+`mkdir build`
+
+`cd build`
 
 `cmake  ..`
 
