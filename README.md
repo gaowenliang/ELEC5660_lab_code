@@ -9,9 +9,9 @@
 
 ## install DJI sdk
 
-`mkdir ws`
+`cd`
 
-`cd ws/src/djiros/OSDK/Onboard-SDK-3.3/build/`
+`cd ELEC5660_lab_code/src/djiros/OSDK/Onboard-SDK-3.3/build/`
 
 `cmake  ..`
 
@@ -23,7 +23,7 @@
 
 `cd`
 
-`cd ws`
+`cd ELEC5660_lab_code`
 
 `catkin_make`
 
@@ -31,7 +31,7 @@
 
 `cd`
 
-`cd ws/src/app/demo_application`
+`cd ELEC5660_lab_code/src/app/demo_application`
 
 `chmod +x hover.sh`
 
