@@ -23,6 +23,8 @@
 
 `sudo make install`
 
+`sudo apt-get install libarmadillo-dev`
+
 ## install others
 
 `cd`
