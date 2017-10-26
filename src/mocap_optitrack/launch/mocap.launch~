@@ -1,6 +1,6 @@
 <launch> 
   <node pkg="mocap_optitrack"    type="mocap_node"    name="mocap_node"    respawn="false"    launch-prefix=""    required="true">
-       <remap from="/Robot_1/pose" to="/Robot_1/pose" />
+    <rosparam file="$(find mocap_optitrack)/config/mocap.yaml" command="load" />
 
   </node>
 </launch>
