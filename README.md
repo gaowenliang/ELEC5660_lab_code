@@ -33,6 +33,13 @@
 
 `catkin_make`
 
+after all errors are debuged, run:
+
+`echo "source /home/nvidia/ELEC5660_lab_code/devel/setup.bash" >> ~/.bashrc`
+
+`source ~/.bashrc`
+
+
 ## get application
 
 `cd`
