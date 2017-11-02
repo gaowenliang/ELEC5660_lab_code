@@ -1,7 +1,7 @@
 # 2995 + 680(batt) = 3675
 mass        : 1.1
 gra         : 9.81
-hov_percent : 0.2
+hov_percent : 0.20
 full_thrust : 60
 ctrl_rate   : 50.0
 js_ctrl_lock_velo: 0.3
@@ -17,28 +17,9 @@ hover:
 gain:
     hover:
         # Controller gain in minimun snap
-        Kp0: 1.0
-        Kp1: 1.0 
-        Kp2: 1.0
-        Kv0: 1.5
-        Kv1: 1.5
-        Kv2: 1.5
-        Kvi0: 0.3
-        Kvi1: 0.3
-        Kvi2: 0.3
-        Ka0: 0.8
-        Ka1: 0.8
-        Ka2: 0.8
-        Kr0: 0.5
-        Kr1: 0.5
-        Kr2: 0.1
-        Kw0: 0.07
-        Kw1: 0.08
-        Kw2: 0.07
-    track:
-        Kp0: 2.3
-        Kp1: 2.3 
-        Kp2: 2.3
+        Kp0: 1.7 
+        Kp1: 1.7 
+        Kp2: 1.7
         Kv0: 2.0
         Kv1: 2.0
         Kv2: 2.0
@@ -48,11 +29,30 @@ gain:
         Ka0: 1.0
         Ka1: 1.0
         Ka2: 1.0
-        Kr0: 0.9
-        Kr1: 0.9
-        Kr2: 0.3
+        Kr0: 0.5
+        Kr1: 0.5
+        Kr2: 0.1
         Kw0: 0.07
-        Kw1: 0.08
+        Kw1: 0.07
+        Kw2: 0.07
+    track:
+        Kp0: 1.7
+        Kp1: 1.7
+        Kp2: 1.7
+        Kv0: 2.0 
+        Kv1: 2.0 
+        Kv2: 2.0
+        Kvi0: 0.3
+        Kvi1: 0.3
+        Kvi2: 0.3
+        Ka0: 1.0
+        Ka1: 1.0
+        Ka2: 1.0
+        Kr0: 0.5
+        Kr1: 0.5
+        Kr2: 0.1
+        Kw0: 0.07
+        Kw1: 0.07
         Kw2: 0.07
 
 idling:
