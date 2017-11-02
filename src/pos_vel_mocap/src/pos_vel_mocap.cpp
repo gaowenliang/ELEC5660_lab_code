@@ -3,17 +3,20 @@
 #include <geometry_msgs/PoseStamped.h>
 #include <iostream>
 #include <nav_msgs/Odometry.h>
+#include <nav_msgs/Path.h>
 #include <ros/ros.h>
 
 using namespace std;
 using namespace Eigen;
-ros::Publisher p1;
+ros::Publisher pub_odom;
+ros::Publisher pub_path;
 
 bool init_ok = false;
 Eigen::Vector3d init_P, last_P;
 Eigen::Quaterniond init_Q, last_Q;
-ros::Time now_t, last_t;
-Vector3d Vi0, Vi1, Vi2, Vi3, Vi4, Vo0;
+ros::Time now_t, last_t, last_pub_t;
+Eigen::Vector3d Vi0, Vi1, Vi2, Vi3, Vi4, Vo0;
+nav_msgs::Path run_path;
 
 void
 pose_callback( const geometry_msgs::PoseStamped::ConstPtr msg )
@@ -76,11 +79,33 @@ pose_callback( const geometry_msgs::PoseStamped::ConstPtr msg )
         odom.twist.twist.linear.x    = Vo0.x( ); // now_vel.x();
         odom.twist.twist.linear.y    = Vo0.y( ); // now_vel.y();
         odom.twist.twist.linear.z    = Vo0.z( ); // now_vel.z();
-        p1.publish( odom );
+        pub_odom.publish( odom );
 
         last_t = now_t;
         last_P = P_w;
         last_Q = Q_w;
+
+        ros::Duration delta_t = now_t - last_pub_t;
+        if ( delta_t.toSec( ) > 0.1 )
+        {
+            geometry_msgs::PoseStamped pose;
+            pose.header.stamp       = now_t;
+            pose.header.frame_id    = "world";
+            pose.pose.orientation.x = odom.pose.pose.orientation.x;
+            pose.pose.orientation.y = odom.pose.pose.orientation.y;
+            pose.pose.orientation.z = odom.pose.pose.orientation.z;
+            pose.pose.orientation.w = odom.pose.pose.orientation.w;
+            pose.pose.position.x    = odom.pose.pose.position.x;
+            pose.pose.position.y    = odom.pose.pose.position.y;
+            pose.pose.position.z    = odom.pose.pose.position.z;
+
+            run_path.header.stamp    = now_t;
+            run_path.header.frame_id = "world";
+            run_path.poses.push_back( pose );
+            pub_path.publish( run_path );
+
+            last_pub_t = now_t;
+        }
     }
 }
 
@@ -92,7 +117,8 @@ main( int argc, char** argv )
 
     ros::Subscriber s1 = n.subscribe( "/Robot_1/pose", 100, pose_callback );
 
-    p1 = n.advertise< nav_msgs::Odometry >( "odom_TA", 100 );
+    pub_odom = n.advertise< nav_msgs::Odometry >( "odom_TA", 100 );
+    pub_path = n.advertise< nav_msgs::Path >( "/mocap_path", 10 );
 
     ros::spin( );
     return 0;
