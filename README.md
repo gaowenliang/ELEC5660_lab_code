@@ -9,9 +9,13 @@
 
 ## install DJI sdk
 
-`mkdir ws`
+`cd`
 
-`cd ws/src/djiros/OSDK/Onboard-SDK-3.3/build/`
+`cd ELEC5660_lab_code/src/djiros/OSDK/Onboard-SDK-3.3/`
+
+`mkdir build`
+
+`cd build`
 
 `cmake  ..`
 
@@ -19,21 +23,32 @@
 
 `sudo make install`
 
+`sudo apt-get install libarmadillo-dev`
+
 ## install others
 
 `cd`
 
-`cd ws`
+`cd ELEC5660_lab_code`
 
 `catkin_make`
+
+after all errors are debuged, run:
+
+`echo "source /home/nvidia/ELEC5660_lab_code/devel/setup.bash" >> ~/.bashrc`
+
+`source ~/.bashrc`
+
 
 ## get application
 
 `cd`
 
-`cd ws/src/app/demo_application`
+`cd ELEC5660_lab_code/src/app/demo_application`
 
 `chmod +x hover.sh`
+
+`cd apps`
 
 `chmod +x hover.desktop.desktop`
 

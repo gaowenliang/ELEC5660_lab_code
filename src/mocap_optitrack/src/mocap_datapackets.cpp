@@ -151,6 +151,7 @@ void MoCapDataFormat::parse()
     }
 
     // skip mean marker error
+    seek(2);
     seek(sizeof(float));
   }
 
