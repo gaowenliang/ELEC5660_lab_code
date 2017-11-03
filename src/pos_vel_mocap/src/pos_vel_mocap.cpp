@@ -8,14 +8,17 @@
 
 using namespace std;
 using namespace Eigen;
+
 ros::Publisher pub_odom;
 ros::Publisher pub_path;
 
 bool init_ok = false;
+
 Eigen::Vector3d init_P, last_P;
 Eigen::Quaterniond init_Q, last_Q;
-ros::Time now_t, last_t, last_pub_t;
+ros::Time now_t, last_odom_t, last_path_t;
 Eigen::Vector3d Vi0, Vi1, Vi2, Vi3, Vi4, Vo0;
+
 nav_msgs::Path run_path;
 
 void
@@ -33,7 +36,7 @@ pose_callback( const geometry_msgs::PoseStamped::ConstPtr msg )
         init_P.z( ) = msg->pose.position.z;
         last_P      = init_P;
         last_Q      = init_Q;
-        last_t      = msg->header.stamp;
+        last_odom_t = msg->header.stamp;
     }
     else
     {
@@ -50,10 +53,10 @@ pose_callback( const geometry_msgs::PoseStamped::ConstPtr msg )
         now_Q.z( ) = msg->pose.orientation.z;
         // Q_w = init_Q.normalized().toRotationMatrix().transpose() * now_Q.normalized().toRotationMatrix();
         Q_w = now_Q.normalized( ).toRotationMatrix( );
-        P_w = ( now_P - init_P );
+        P_w = now_P - init_P;
 
         Eigen::Vector3d now_vel;
-        now_vel = ( P_w - last_P ) / ( now_t - last_t ).toSec( );
+        now_vel = ( P_w - last_P ) / ( now_t - last_odom_t ).toSec( );
         //        std::cout << " time " << ( now_t - last_t ).toSec( ) << std::endl;
         //        std::cout << " now_vel " << now_vel << std::endl;
 
@@ -81,11 +84,11 @@ pose_callback( const geometry_msgs::PoseStamped::ConstPtr msg )
         odom.twist.twist.linear.z    = Vo0.z( ); // now_vel.z();
         pub_odom.publish( odom );
 
-        last_t = now_t;
-        last_P = P_w;
-        last_Q = Q_w;
+        last_odom_t = now_t;
+        last_P      = P_w;
+        last_Q      = Q_w;
 
-        ros::Duration delta_t = now_t - last_pub_t;
+        ros::Duration delta_t = now_t - last_path_t;
         if ( delta_t.toSec( ) > 0.1 )
         {
             geometry_msgs::PoseStamped pose;
@@ -104,7 +107,7 @@ pose_callback( const geometry_msgs::PoseStamped::ConstPtr msg )
             run_path.poses.push_back( pose );
             pub_path.publish( run_path );
 
-            last_pub_t = now_t;
+            last_path_t = now_t;
         }
     }
 }
