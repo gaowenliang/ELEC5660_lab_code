@@ -8,8 +8,3 @@ rigid_bodies:
         pose2d: Robot_1/ground_pose
         frame_id: Robot_1/base_link
         parent_frame_id: world
-    '55':
-        pose: Robot_55/pose
-        pose2d: Robot_55/ground_pose
-        frame_id: Robot_55/base_link
-        parent_frame_id: world
