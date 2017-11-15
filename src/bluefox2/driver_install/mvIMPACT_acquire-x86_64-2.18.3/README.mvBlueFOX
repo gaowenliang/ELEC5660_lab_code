@@ -1,0 +1,303 @@
+MATRIX VISION mvBlueFOX USB 2.0 Camera - Linux Access Libraries
+===============================================================
+
+Version 2.3.5 Feb 2013
+
+System Requirements
+-------------------
+
+Kernel requirements:
+Kernel 2.6.x or greater with support for the USB device filesystem (kernel configuration option: CONFIG_USB_DEVICEFS=y).
+Most distributions with precompiled kernels have this option turned on by default.
+Using the USB device filesystem means that no special kernel mode driver is needed to operate the
+mvBlueFOX camera and that operation is effectively independent of the kernel version actually used.
+
+Software requirements:
+Linux x86 (32-bit).
+- The 32 bit version will run on a 64-bit Linux system if the other library requirements are met
+with 32-bit libraries. i.e. you cannot mix 64 and 32-bit libraries and applications.
+- Versions for Linux on x86-64 (64-bit), PowerPC, ARM or MIPS may be possible on request.
+
+GNU compiler version GCC 4.0.x or greater and associated toolchain.
+
+udev
+
+libusb (http://www.libusb.org/)
+MATRIX VISION supplies its own version of this library in this archive. See the "libusb" subdirectory for
+details and licensing issues.
+
+Other requirements:
+Optional: wxWidgets 3.x for the wxWidget Testprograms.
+
+As an example of which packets need to be installed, consider OpenSuSE 10.1:
+- The compiler used is gcc 4.1.0 and may need to be installed. Use the "gcc" und "gcc-c++" RPMs.
+Other RPMs may be installed automatically due to dependencies (e.g. make).
+- Install the wxWidgets "wxGTK" and "wxGTK-develop" RPMs. Others that will be automatically installed due to
+dependencies include "wxGTK-compat" and "wxGTK-gl". Although the MATRIX VISION software does not use
+the ODBC database API the SuSE version of wxWidgets has been compiled with ODBC support and the RPM
+does not contain a dependency to automatically install ODBC. For this reason you must also
+install the "unixODBC-devel" RPM.
+- OpenSuSE 10.1 uses the udev system so a separate hotplug installation is not needed.
+
+
+Hardware requirements:
+USB 2.0 Host controller (Hi-Speed).
+- or -
+USB 1.1 Host controller will also work (with a max. framerate of 3 to 4 fps 
+@640x480 only).
+
+N.B. We have noticed problems with some USB Chipsets. At high data rates sometimes
+the image data appears to be corrupted. If you experience this you could try one or
+more of the following things.
+
+- a different PC.
+- a plug-in PCI/USB-2.0 card without any cables between the card and the USB connector.
+- turning off the image footer property - this will ignore data errors.
+
+IMPORTANT
+=========
+This version only contains libraries for Linux x86 (32 bit) or Linux 64-bit (x86_64).
+
+See the instructions below for advice on deciding which package you should install.
+
+This version for Linux does not include hot-plugging support at the application level.
+i.e. a running application will not be informed of new mvBlueFOX devices that have been
+plugged in. After device removal you need to stop the application, plug in the new camera
+and then restart the application.
+
+The 32-bit x86 version will also run correctly in a VMware (http://www.vmware.com) virtual machine!
+
+Introduction
+------------
+The mvBlueFOX is controlled by a number of user-space libraries.  It is not necessary to
+compile kernel modules for the mvBlueFOX. 
+
+Installation
+------------
+1. You can install the mvBlueFOX libraries as follows:
+
+- create a new directory somewhere on your system.
+- copy the correct mvbluefox package file to this directory and change into 
+this directory with "cd".
+
+The mvBlueFOX libraries are supplied as a "tgz" archive with the extension ".tgz".
+The older "autopackage" format is now deprecated since it cannot handle 64-bit libraries.
+
+Unpack the archive using "tar" e.g.:
+
+tar xvzf mmvBlueFOX-x86_ABI2-1.12.72.tgz
+
+
+------------------------
+2. After installing the mvBlueFOX access libraries you will see something like 
+The following directory structure in your directory (dates and file sizes will differ
+from the list below):
+
+drwxr-xr-x. 21 root root  4096 11. Jul 22:04 apps
+-rw-r--r--.  1 root root    75 11. Jul 22:04 Build.info
+drwxr-xr-x.  3 root root  4096 11. Jul 22:04 common
+drwxr-xr-x.  3 root root  4096 11. Jul 22:04 DriverBase
+drwxr-xr-x.  3 root root  4096 11. Jul 22:04 lib
+-rw-r--r--.  1 root root  2636 11. Jul 22:04 Makefile
+drwxr-xr-x.  3 root root  4096 11. Jul 22:04 mvDeviceManager
+drwxr-xr-x.  2 root root  4096 11. Jul 22:04 mvIMPACT_CPP
+drwxr-xr-x.  3 root root  4096 11. Jul 22:04 mvPropHandling
+drwxr-xr-x.  3 root root  4096 11. Jul 22:04 python-site-packages
+-rw-r--r--.  1 root root 13621 11. Jul 22:04 README.mvBlueFOX
+drwxr-xr-x.  2 root root  4096 11. Jul 22:04 Scripts
+drwxr-xr-x.  3 root root  4096 11. Jul 22:04 Toolkits
+
+The directory "lib/x86" contains the pre-compiled 32-bit libraries for accessing the 
+mvBlueFOX.  If 64-bit libraries are supplied they will be found in "lib/x86_64".
+The "apps" directory contains test applications (source code).
+The other directories contain headers needed to write applications for the mvBlueFOX.
+
+Since the libraries are not installed to a directory known to the system i.e. 
+not in the "ldconfig" cache you will need to tell the system where to find them 
+by...
+
+- using the "LD_LIBRARY_PATH" environment variable,
+- or copying the libraries by hand to a system directory like "/usr/lib" (or 
+using some symbolic links), 
+- or entering the directory in "/etc/ld.so.conf" and running "ldconfig".
+
+e.g. to start the application called "LiveSnap":
+
+cd my_mvbf_directory
+LD_LIBRARY_PATH=`pwd`/lib/x86 apps/LiveSnap/x86/LiveSnap
+
+For 64-bit it will look like this...
+LD_LIBRARY_PATH=`pwd`/lib/x86_64 apps/LiveSnap/x86_64/LiveSnap
+
+For ARM it will look like this...
+LD_LIBRARY_PATH=`pwd`/lib/arm apps/LiveSnap/arm/LiveSnap
+etc.
+
+------------------------
+
+3. To build the test applications type "make". This will attempt to build 
+all the test applications contained in "apps". If you have problems compiling
+the wxWidget library or application you may need to do one or more of the following:
+
+- install the wxWidget 3.x development files (headers etc.) supplied for your 
+distribution. (See "Other requirements" above).
+- fetch, compile and install the wxWidget 3.x packet from source downloaded 
+from the website (http://www.wxwidgets.org).
+- alter the Makefiles so as to find the wxWidget configuration script called 
+wx-config. The files you may need to alter are to be found here:
+
+apps/mvPropViewMakefile.inc
+
+You will find the compiled test programs in the subdirectories "apps/.../x86".
+For 64 bit systems it will be "apps/.../x86_64".
+For ARM systems it will be "apps/.../arm".
+
+If you cannot build the wxWidget test program you should, at least, be able to 
+compile the text-based test programs in apps/SingleSnap, apps/LiveSnap, etc.
+
+------------------------
+
+4. It *may* be possible to run applications as a non-root user on your system if you
+are using the udev system.
+
+Within our archive you will find inside the directory "Scripts" an udev rule named
+51-mvbf.rules.
+Copy this rule into your hosts udev/rules.d directoy. The location of this directory 
+depends on the distribution you are using.
+
+e.g. Debian Lenny
+==> /etc/udev/rules.d
+
+e.g. Ubuntu Karmic
+==> /lib/udev/rules.d
+
+After copying this rule, re-connect the mvBlueFOX.
+Every mvBlueFOX device node under /dev/bus/usb will now be accessible
+by users who are members of the group "plugdev"
+
+------------------------
+
+5. Realtime Threads
+Since image data transfer is running in user space it may be necessary to ensure that applications that transfer
+continuous, live image data run at a higher priority than the majority of other applications on the system. The
+mvBlueFOX libraries use a number of parallel threads and the priority of these threads will be automatically
+adjusted to ensure that the camera is correctly controlled. However, if you are running an application as a
+non-root user you will normally not have permission to adjust the thread priority. There are several ways
+to solve this problem:
+
+
+5.1 Run the application as the user "root". This is not recommended because it is a potential security risk.
+
+5.2 Start you application using nice with a higher priority than the default:
+
+e.g.
+nice -n -5 my_application
+
+This will help on a system that is not particularly heavily used but only if the user is allowed to change the "nice" priority.
+
+5.3 On modern Linux systems with a kernel >= 2.6.12 you may be able to use the application called "set_rlimits" which may
+be downloaded from here: http://www.physics.adelaide.edu.au/~jwoithe/ .
+
+5.4 If your system is using "pam" authentification with a version number >= 0.79 and you have a kernel with a version
+number >= 2.6.12 (e.g. Ubuntu 6.10, Fedora FC6, Gentoo) then you may determine which users or groups are able to change
+the "nice" priority and also use "realtime" threads using the pam_limits plugin.  ===> This is the preferred method. <===
+
+Example:
+If your user is a member of the group "usb" just add the followling lines (as root) to the file "/etc/security/limits.conf";
+then logout and login again as the user you want to use for the mvBlueFOX application:
+
+@usb             -       nice            -20
+@usb             -       rtprio          99
+
+These lines ensure that all members of the "usb" group are able to use "nice" to set an application's priority up to
+-20 and to change the priority of threads to use realtime priority (wich will then be handles automatically by the
+mvBlueFOX libraries).
+
+You can also use wildcards in this file or add lines for individual users. More information can be found here:
+http://www.kernel.org/pub/linux/libs/pam/Linux-PAM-html/sag-pam_limits.html
+
+
+------------------------
+
+6. == Note about using CMOS versions of the mvBlueFOX and mvBlueFOX-M especially with USB 1.1 ==
+Version 1.4.5 contains initial support for CMOS mvBlueFOX on USB 1.1 . In order
+to conform to the rigid timing specifications of the CMOS sensor, onboard RAM is used.
+This RAM is available only on mvBlueFOX-M boards at the moment. Therefore you cannot use
+the mvBlueFOX-102x with USB 1.1 . It will work with USB 2.0. 
+
+== IMPORTANT ==
+If you want to capture continuous live images from mvBlueFOX-102 or mvBlueFOX-M102x you
+should switch the trigger mode from "Continuous" to "OnDemand" for best reliable results.
+For single snaps the default values should work correctly.
+== IMPORTANT ==
+
+------------------------
+
+7. Power Down Mode
+To try out the new power down mode you will need to update the firmware on the mvBlueFOX to at least version 39.
+There is a simple text-based utility to do this in "apps/FirmwareUpgrade". Just build the application and start on the
+platform of your choice giving the serial number of the connected mvBlueFOX as a parameter. e.g. on an Embedded ARM system...
+
+$ ./arm/FirmwareUpgrade BF000188
+
+ ++ Start FirmwareUpgrade: Sep 28 2006/11:48:19
+ Have found 1 devices on this platform!
+  0 Serial: BF000188
+  Initialising the device: BF000188. This might take some time...
+  The firmware of device BF000188 is currently 37.
+  It will now be updated. During this time(approx. 30 sec.) the application will not react. Please be patient.
+  Successfully performed firmware update
+  Update successful.
+  Please disconnect and reconnect the device now to activate the new firmware.
+  Press any key to end the application
+
+To test the power down mode use the test application in "apps/PowerDownTest". Take a look at the source code to see which
+function is used to switch on power down mode. Here is an example of the output for an Embedded ARM system...
+
+$ ./arm/PowerDownTest BF000188
+
+ ++ Start PowerDownTest sample: Sep 28 2006/11:48:43
+ Have found 1 devices on this platform!
+  0 Serial: BF000188
+  Initialising the device: BF000188. This might take some time...
+  Ready to snap. Press 'p'<return> to power down, 'q'<return> to quit or <return> to snap an image..
+
+  Request Nr.: 0. Snap took 0.76s.,
+  Will save the file as:  SingCapt.pgm
+  Ready to snap. Press 'p'<return> to power down, 'q'<return> to quit or <return> to snap an image..
+
+  Request Nr.: 1. Snap took 0.41s.,
+  Will save the file as:  SingCapt.pgm
+  Ready to snap. Press 'p'<return> to power down, 'q'<return> to quit or <return> to snap an image..
+
+  Request Nr.: 2. Snap took 0.4s.,
+  Will save the file as:  SingCapt.pgm
+  Ready to snap. Press 'p'<return> to power down, 'q'<return> to quit or <return> to snap an image..
+  p
+  Power off!
+  Ready to snap. Press 'p'<return> to power down, 'q'<return> to quit or <return> to snap an image..
+
+  Power On!. Power On took 2.24s.,
+  Request Nr.: 3. Snap took 0.58s.,
+  Will save the file as:  SingCapt.pgm
+  Ready to snap. Press 'p'<return> to power down, 'q'<return> to quit or <return> to snap an image..
+
+  Request Nr.: 0. Snap took 0.39s.,
+  Will save the file as:  SingCapt.pgm
+  Ready to snap. Press 'p'<return> to power down, 'q'<return> to quit or <return> to snap an image..
+  q
+------------------------
+
+
+8. Please refer to the mvBlueFOX handbook for information on programming with 
+the mvIMPACT_Acquire API. If the handbook makes references to Windows DLLs 
+please use the equivalent Linux dynamic libraries that have been installed on 
+your system.
+------------------------
+
+
+
+-
+MATRIX VISION GmbH
+support@matrix-vision.de
+

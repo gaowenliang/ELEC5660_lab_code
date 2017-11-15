@@ -1,0 +1,20 @@
+libusb
+======
+Version 2.3.5 Feb 2013
+
+The mvBlueFOX library also links dynamically to libusb-1.0 (http://www.libusb.org/) which is released under the LGPL license.
+You will find a copy of this license ("COPYING") and the copyright notices with a list of Authorsi ("AUTHORS")
+in the "libusb" subdirectory after unpacking the archive.
+
+N.B.
+This LGPL license applies only to libusb and not to any other libraries or applications supplied in this package.
+
+Please check our website http://gpl.matrix-vision.com/others/libusb/ for details of any changes 
+that we may have made to the source code of this library. You will find the complete source code and
+patches there.
+
+--
+MATRIX VISION GmbH
+support@matrix-vision.de
+
+

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes" ?>
+<!DOCTYPE DebugWriterList [
+  <!ELEMENT DebugWriterList (DebugWriter*)>
+  <!ELEMENT DebugWriter (#PCDATA)>
+  <!ATTLIST DebugWriter
+    name CDATA #REQUIRED
+    flags CDATA #REQUIRED
+    outputmask CDATA "010"
+    outputfile CDATA #IMPLIED
+    clearFile CDATA "1"
+    fileFormat (xml | text | mvlog) 'xml'
+    stylesheet CDATA "mvIMPACT_acquireLogFile.xsl"
+  >
+]>
+<DebugWriterList>
+  <!--
+  name: The name of the module OR the device (family name followed by the device ID) this section applies to.
+  flags: Defines what kind of messages shall be sent to the output. From right to left these messages will be more important, a 1 enables them.
+  outputmask: From right to left for a 1 the messages will be sent to the systems standard output, the systems debug output or a file.
+  outputfile: the name of the output file for log messages. STDLOGDIR is predefined.
+  clearFile: If set to 1 a new file will be created when a log session starts. 0 will append to an existing log-file.
+  fileFormat: Defines the output format for the log file output. It can be 'text' for *.txt style output, 'xml' for XML file output with a user definable stylesheet or 'mvlog' to create log files that can be displayed using mvLogFileViewer.html. If this parameter is not present XML file output will be used.
+  stylesheet: Specifies the stylesheet used to transform this log-file(set to 'none' for NOT using a stylesheet)(this parameter will only be used if 'fileFormat' is set to 'xml'.
+  More information can be found in the manual in the chapter about logging.
+  -->
+  <DebugWriter name="mvPropHandling" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvPropHandling" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvDeviceManager" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvDeviceManager" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueFOX" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueFOXDriver" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueFOX-000" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueFOX-000" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueFOX-001" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueFOX-001" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueFOX-002" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueFOX-002" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueFOX-003" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueFOX-003" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueFOX-004" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueFOX-004" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueFOX-005" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueFOX-005" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueFOX-006" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueFOX-006" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueFOX-007" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueFOX-007" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueFOX-008" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueFOX-008" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueFOX-009" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueFOX-009" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueFOX-010" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueFOX-010" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueFOX-011" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueFOX-011" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueFOX-012" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueFOX-012" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueFOX-013" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueFOX-013" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueFOX-014" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueFOX-014" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueFOX-015" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueFOX-015" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvGenTLConsumer" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvGenTLConsumer" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueCOUGAR" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueCOUGARDriver" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueCOUGAR-000" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueCOUGAR-000" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueCOUGAR-001" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueCOUGAR-001" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueCOUGAR-002" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueCOUGAR-002" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueCOUGAR-003" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueCOUGAR-003" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueCOUGAR-004" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueCOUGAR-004" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueCOUGAR-005" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueCOUGAR-005" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueCOUGAR-006" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueCOUGAR-006" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueCOUGAR-007" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueCOUGAR-007" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueCOUGAR-008" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueCOUGAR-008" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueCOUGAR-009" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueCOUGAR-009" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueCOUGAR-010" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueCOUGAR-010" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueCOUGAR-011" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueCOUGAR-011" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueCOUGAR-012" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueCOUGAR-012" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueCOUGAR-013" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueCOUGAR-013" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueCOUGAR-014" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueCOUGAR-014" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueCOUGAR-015" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueCOUGAR-015" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueLYNX-000" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueLYNX-000" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueGEMINI-000" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueGEMINI-000" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvGenTLProducer" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvGenTLProducer" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="GigEVisionDevice-000" flags="1111000" outputmask="100" outputfile="STDLOGDIR/GigEVisionDevice-000" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="GigEVisionDevice-001" flags="1111000" outputmask="100" outputfile="STDLOGDIR/GigEVisionDevice-001" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="GigEVisionDevice-002" flags="1111000" outputmask="100" outputfile="STDLOGDIR/GigEVisionDevice-002" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="GigEVisionDevice-003" flags="1111000" outputmask="100" outputfile="STDLOGDIR/GigEVisionDevice-003" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="GigEVisionDevice-004" flags="1111000" outputmask="100" outputfile="STDLOGDIR/GigEVisionDevice-004" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="GigEVisionDevice-005" flags="1111000" outputmask="100" outputfile="STDLOGDIR/GigEVisionDevice-005" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="GigEVisionDevice-006" flags="1111000" outputmask="100" outputfile="STDLOGDIR/GigEVisionDevice-006" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="GigEVisionDevice-007" flags="1111000" outputmask="100" outputfile="STDLOGDIR/GigEVisionDevice-007" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="GigEVisionDevice-008" flags="1111000" outputmask="100" outputfile="STDLOGDIR/GigEVisionDevice-008" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="GigEVisionDevice-009" flags="1111000" outputmask="100" outputfile="STDLOGDIR/GigEVisionDevice-009" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="GigEVisionDevice-010" flags="1111000" outputmask="100" outputfile="STDLOGDIR/GigEVisionDevice-010" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="GigEVisionDevice-011" flags="1111000" outputmask="100" outputfile="STDLOGDIR/GigEVisionDevice-011" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="GigEVisionDevice-012" flags="1111000" outputmask="100" outputfile="STDLOGDIR/GigEVisionDevice-012" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="GigEVisionDevice-013" flags="1111000" outputmask="100" outputfile="STDLOGDIR/GigEVisionDevice-013" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="GigEVisionDevice-014" flags="1111000" outputmask="100" outputfile="STDLOGDIR/GigEVisionDevice-014" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="GigEVisionDevice-015" flags="1111000" outputmask="100" outputfile="STDLOGDIR/GigEVisionDevice-015" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="USB3VisionDevice-000" flags="1111000" outputmask="100" outputfile="STDLOGDIR/USB3VisionDevice-000" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="USB3VisionDevice-001" flags="1111000" outputmask="100" outputfile="STDLOGDIR/USB3VisionDevice-001" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="USB3VisionDevice-002" flags="1111000" outputmask="100" outputfile="STDLOGDIR/USB3VisionDevice-002" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="USB3VisionDevice-003" flags="1111000" outputmask="100" outputfile="STDLOGDIR/USB3VisionDevice-003" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="USB3VisionDevice-004" flags="1111000" outputmask="100" outputfile="STDLOGDIR/USB3VisionDevice-004" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="USB3VisionDevice-005" flags="1111000" outputmask="100" outputfile="STDLOGDIR/USB3VisionDevice-005" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="USB3VisionDevice-006" flags="1111000" outputmask="100" outputfile="STDLOGDIR/USB3VisionDevice-006" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="USB3VisionDevice-007" flags="1111000" outputmask="100" outputfile="STDLOGDIR/USB3VisionDevice-007" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="USB3VisionDevice-008" flags="1111000" outputmask="100" outputfile="STDLOGDIR/USB3VisionDevice-008" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="USB3VisionDevice-009" flags="1111000" outputmask="100" outputfile="STDLOGDIR/USB3VisionDevice-009" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="USB3VisionDevice-010" flags="1111000" outputmask="100" outputfile="STDLOGDIR/USB3VisionDevice-010" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="USB3VisionDevice-011" flags="1111000" outputmask="100" outputfile="STDLOGDIR/USB3VisionDevice-011" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="USB3VisionDevice-012" flags="1111000" outputmask="100" outputfile="STDLOGDIR/USB3VisionDevice-012" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="USB3VisionDevice-013" flags="1111000" outputmask="100" outputfile="STDLOGDIR/USB3VisionDevice-013" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="USB3VisionDevice-014" flags="1111000" outputmask="100" outputfile="STDLOGDIR/USB3VisionDevice-014" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="USB3VisionDevice-015" flags="1111000" outputmask="100" outputfile="STDLOGDIR/USB3VisionDevice-015" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueFOX3-000" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueFOX3-000" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueFOX3-001" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueFOX3-001" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueFOX3-002" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueFOX3-002" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueFOX3-003" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueFOX3-003" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueFOX3-004" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueFOX3-004" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueFOX3-005" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueFOX3-005" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueFOX3-006" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueFOX3-006" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueFOX3-007" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueFOX3-007" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueFOX3-008" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueFOX3-008" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueFOX3-009" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueFOX3-009" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueFOX3-010" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueFOX3-010" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueFOX3-011" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueFOX3-011" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueFOX3-012" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueFOX3-012" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueFOX3-013" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueFOX3-013" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueFOX3-014" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueFOX3-014" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvBlueFOX3-015" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvBlueFOX3-015" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvHYPERION" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvHYPERIONfg" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvHYPERION-000" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvHYPERION-000" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvHYPERION-001" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvHYPERION-001" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvHYPERION-002" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvHYPERION-002" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvHYPERION-003" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvHYPERION-003" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvHYPERION-004" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvHYPERION-004" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvHYPERION-005" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvHYPERION-005" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvHYPERION-006" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvHYPERION-006" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvHYPERION-007" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvHYPERION-007" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvSIGMA" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvSIGMAfg" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvSIGMA-000" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvSIGMA-000" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvSIGMA-001" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvSIGMA-001" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvSIGMA-002" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvSIGMA-002" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvSIGMA-003" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvSIGMA-003" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvSIGMA-004" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvSIGMA-004" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvSIGMA-005" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvSIGMA-005" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvSIGMA-006" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvSIGMA-006" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvSIGMA-007" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvSIGMA-007" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvTITAN" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvTITANfg" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvTITAN-000" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvTITAN-000" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvTITAN-001" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvTITAN-001" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvTITAN-002" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvTITAN-002" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvTITAN-003" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvTITAN-003" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvTITAN-004" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvTITAN-004" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvTITAN-005" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvTITAN-005" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvTITAN-006" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvTITAN-006" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvTITAN-007" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvTITAN-007" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvVirtualDevice" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvVirtualDeviceDriver" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvVirtualDevice-000" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvVirtualDevice-000" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvVirtualDevice-001" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvVirtualDevice-001" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="mvIMPACTAcquireCognexAdapter" flags="1111000" outputmask="100" outputfile="STDLOGDIR/mvIMPACTAcquireCognexAdapter" clearFile="1" fileFormat="mvlog"></DebugWriter>
+  <DebugWriter name="DirectShow_acquire" flags="1111000" outputmask="100" outputfile="STDLOGDIR/DirectShow_acquire" clearFile="1" fileFormat="mvlog"></DebugWriter>
+</DebugWriterList>
