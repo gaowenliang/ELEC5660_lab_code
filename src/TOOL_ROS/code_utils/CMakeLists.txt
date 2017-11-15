@@ -13,6 +13,10 @@ find_package(catkin REQUIRED
 #set(EIGEN_INCLUDE_DIR "/usr/local/include/eigen3")
 find_package(Eigen3 REQUIRED)
 find_package(OpenCV REQUIRED)
+message(STATUS "OpenCV library status:")
+message(STATUS "    version: ${OpenCV_VERSION}")
+message(STATUS "    libraries: ${OpenCV_LIBS}")
+message(STATUS "    include path: ${OpenCV_INCLUDE_DIRS}")
 
 catkin_package(
     INCLUDE_DIRS include
@@ -38,4 +42,4 @@ target_link_libraries(poly_test ${Boost_LIBRARIES} )
 add_library(cv_utils STATIC
     src/cv_utils.cc
     )
-target_link_libraries(cv_utils ${Boost_LIBRARIES} ${OpenCv_LIBS})
+target_link_libraries(cv_utils ${Boost_LIBRARIES}   ${OpenCV_LIBS} )
