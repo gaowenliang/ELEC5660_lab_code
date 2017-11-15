@@ -213,9 +213,6 @@ public:
     static void on_authority_ack(Vehicle* vehicle, RecvContainer recvFrame, DJI::OSDK::UserData userData);
     void obtain_control(bool b);
     void manually_leave_api_mode(bool need_release);
-    void set_continue_trigger(int freq)
-    {  vehicle->hardSync->setSyncFreq(freq, 0);
-    }
 
     bool m_verbose_output;
 

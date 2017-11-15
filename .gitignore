@@ -3,4 +3,5 @@
 docs/*.jpg
 devel
 build
+*~
 .catkin_workspace

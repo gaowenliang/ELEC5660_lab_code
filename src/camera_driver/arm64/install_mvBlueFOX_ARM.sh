@@ -159,6 +159,9 @@ if [ "$( ls | grep -c 'mvBlueFOX.*\.tgz' )" != "0" ] ; then
   elif [ "$(echo $TARNAME | grep -c ARM64)" != "0" ]; then
     TARGET="ARM64"
     TARGET_UNCAPITALIZED="arm64"
+  elif [ "$(echo $TARNAME | grep -c AARCH64)" != "0" ]; then
+    TARGET="AARCH64"
+    TARGET_UNCAPITALIZED="aarch64"
   else
     echo "Error: Could not determine target architecture from filename."
     echo "In case the file been renamed, please revert to original name."

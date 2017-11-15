@@ -1,7 +1,7 @@
 <launch>
     <node pkg="djiros" type="djifox_node" name="djiros" output="screen" launch-prefix="">
         <param name="log_level" type="string" value="info"/>
-        <param name="serial_name" type="string" value="/dev/ttyUSB0"/>
+        <param name="serial_name" type="string" value="/dev/ttyTHS2"/>
         <param name="baud_rate" type="int" value="921600"/>
         <param name="app_id" type="int" value="$(env DJIROS_APPID)"/>
         <param name="enc_key" type="string" value="$(env DJIROS_ENCKEY)"/>  
@@ -21,10 +21,10 @@
 
             # individual setting for camera 0
             camera0:
-                serial: "25001285"
+                serial: "25001511"
                 topic: image
                 use_auto_exposure: false
-                exposure_time_us: 10000
+                exposure_time_us: 12000
                 # aec_desired_gray_value: 60
                 # aec_control_delay_frame: 1
                 auto_speed: 0 # 0--1--2, slow--medium--fast converge to desired value

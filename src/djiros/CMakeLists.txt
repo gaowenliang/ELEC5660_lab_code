@@ -103,7 +103,7 @@ catkin_package(
         nav_msgs
         std_msgs
 )
-
+ 
 ###########
 ## Build ##  
 ###########
@@ -119,9 +119,6 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR}/cmake)
 
 if(ENABLE_DJIFOX)
   find_package(mvIMPACT REQUIRED)
-   message(STATUS "mvIMPACT library status:")
-   message(STATUS "    libraries: ${mvIMPACT_LIBRARIES}")
-   message(STATUS "    include path: ${mvIMPACT_INCLUDE_DIRS}")
 endif(ENABLE_DJIFOX)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
@@ -154,6 +151,7 @@ add_dependencies(djiros_node
 ## Specify libraries to link a library or executable target against
 target_link_libraries(djiros_node
    ${catkin_LIBRARIES}
+   ${mvIMPACT_LIBRARIES}
    ${DJIOSDK_LIBRARIES}
 )
 

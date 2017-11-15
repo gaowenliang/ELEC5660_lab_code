@@ -98,6 +98,7 @@ void DjiRos::process() {
     }
   }
 
+
   // Control authority state machine processing
   if (!sensor_mode) {
     bool switch_into_F_mode = api_trigger.isRaiseEdge();
