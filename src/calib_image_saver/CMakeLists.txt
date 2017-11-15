@@ -57,7 +57,7 @@ include_directories(
 )
 
 add_executable(stereoImageSaver    src/stereoImageSaver.cc    src/chessboard/Chessboard.cc    )
-target_link_libraries(stereoImageSaver  dw  ${catkin_LIBRARIES} ${OpenCV_LIBS})
+target_link_libraries(stereoImageSaver   ${catkin_LIBRARIES} ${OpenCV_LIBS})
 
 
 add_executable(singleImageSaver    src/singleImageSaver.cc    src/chessboard/Chessboard.cc    )

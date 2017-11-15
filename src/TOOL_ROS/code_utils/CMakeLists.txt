@@ -38,4 +38,4 @@ target_link_libraries(poly_test ${Boost_LIBRARIES} )
 add_library(cv_utils STATIC
     src/cv_utils.cc
     )
-target_link_libraries(cv_utils ${Boost_LIBRARIES} )
+target_link_libraries(cv_utils ${Boost_LIBRARIES} ${OpenCv_LIBS})
