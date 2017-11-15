@@ -71,11 +71,9 @@ list(APPEND mvIMPACT_CHECK_INCLUDE_DIRS
     )
 execute_process(COMMAND uname -m COMMAND tr -d '\n' OUTPUT_VARIABLE ARCH)
 list(APPEND mvIMPACT_CHECK_LIBRARY_DIRS
-    /opt/mvIMPACT_acquire/lib/${ARCH}
-    /opt/mvIMPACT_Acquire/lib/${ARCH}
+    /opt/mvIMPACT_acquire/lib/arm64/
+    /opt/mvIMPACT_Acquire/lib/arm64/
     )
-set(mvIMPACT_LIBRARY_DIR /opt/mvIMPACT_acquire/lib/${ARCH})
-message(STATUS "mvimpact library dir found: " ${mvIMPACT_LIBRARY_DIR})
 
 # Check general hints
 if(mvIMPACT_HINTS AND EXISTS ${mvIMPACT_HINTS})
@@ -85,12 +83,13 @@ endif()
 
 # Search supplied hint directories first if supplied.
 # Find include directory for mvimpact
+message(STATUS "!!!!!!!!! " ${mvIMPACT_INCLUDE_DIR})
 find_path(mvIMPACT_INCLUDE_DIR
     NAMES mvIMPACT_CPP/mvIMPACT_acquire.h
     PATHS ${mvIMPACT_INCLUDE_DIR_HINTS}
     ${mvIMPACT_CHECK_INCLUDE_DIRS}
     NO_DEFAULT_PATH)
-set(mvIMPACT_INCLUDE_DIR /opt/mvIMPACT_acquire)
+message(STATUS "!!!!!!!!! " ${mvIMPACT_INCLUDE_DIR})
 if(NOT mvIMPACT_INCLUDE_DIR OR NOT EXISTS ${mvIMPACT_INCLUDE_DIR})
     mvIMPACT_REPORT_NOT_FOUND(
         "Could not find mvimpact include directory, set mvIMPACT_INCLUDE_DIR to "
@@ -100,15 +99,12 @@ else()
     message(STATUS "mvimpact include dir found: " ${mvIMPACT_INCLUDE_DIR})
 endif()
 
-
 # Find library directory for mvimpact
 find_library(mvIMPACT_LIBRARY
     NAMES libmvBlueFOX.so
-    PATHS # ${mvIMPACT_LIBRARY_DIR_HINTS}
-   # ${mvIMPACT_CHECK_LIBRARY_DIRS}
-    ${mvIMPACT_LIBRARY_DIR}
+    PATHS ${mvIMPACT_LIBRARY_DIR_HINTS}
+    ${mvIMPACT_CHECK_LIBRARY_DIRS}
     NO_DEFAULT_PATH)
-set(mvIMPACT_LIBRARY /opt/mvIMPACT_acquire/lib/${ARCH}/libmvBlueFOX.so)
 if(NOT mvIMPACT_LIBRARY OR NOT EXISTS ${mvIMPACT_LIBRARY})
     mvIMPACT_REPORT_NOT_FOUND(
         "Could not find mvimpact library, set mvIMPACT_LIBRARY "
@@ -147,8 +143,6 @@ endif()
 if(mvIMPACT_FOUND)
     set(mvIMPACT_INCLUDE_DIRS ${mvIMPACT_INCLUDE_DIR})
     file(GLOB mvIMPACT_LIBRARIES ${mvIMPACT_LIBRARY_DIR}lib*.so)
-    message(STATUS "find mvIMPACT_INCLUDE_DIR: " ${mvIMPACT_INCLUDE_DIR})
-    message(STATUS "find mvIMPACT_LIBRARIES: " ${mvIMPACT_LIBRARIES})
 endif()
 
 # Handle REQUIRED / QUIET optional arguments.

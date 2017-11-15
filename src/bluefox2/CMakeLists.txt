@@ -11,7 +11,7 @@ find_package(catkin REQUIRED COMPONENTS
 
 find_package(mvIMPACT REQUIRED)
 find_package(Boost COMPONENTS program_options REQUIRED)
-include(/home/gao/ws2/src/TOOL_ROS/bluefox2/cmake/FindmvIMPACT.cmake)
+
 message(STATUS "mvIMPACT library status:")
 message(STATUS "    libraries: ${mvIMPACT_LIBRARY}")
 message(STATUS "    include path: ${mvIMPACT_INCLUDE_DIRS}")
