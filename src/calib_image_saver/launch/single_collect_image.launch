@@ -1,7 +1,7 @@
 <launch>
     <node pkg="calib_image_saver" type="singleImageSaver" name="saver" output="screen">
         <remap from="/image_input" to="/djiros/image"/>
-        <param name="image_path" type="string" value="${pkg calib_image_saver}/image"/>
+        <param name="image_path" type="string" value="/home/nvidia/images"/>
         <param name="image_name" type="string" value="IMG_"/>
         <param name="rate" type="int" value="9"/>
         <param name="board_width" type="int" value="9"/>
