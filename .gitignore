@@ -1,5 +1,6 @@
 *.tags*
 *.out
+*.bag
 docs/*.jpg
 devel
 build
