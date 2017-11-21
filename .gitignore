@@ -5,3 +5,4 @@ devel
 build
 *~
 .catkin_workspace
+CATKIN_IGNORE
